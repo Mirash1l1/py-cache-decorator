@@ -7,7 +7,7 @@ def cache(func: Callable) -> Callable:
     def wrapper(*args, **kwargs) -> Any:
         key = (args, tuple(sorted(kwargs.items())))
 
-        if key in cash:
+        if key in cached_results:
             print("Getting from cache")
             return cached_results[key]
 

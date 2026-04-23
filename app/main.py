@@ -13,6 +13,7 @@ def cache(func: Callable) -> Callable:
 
         print("Calculating new result")
         result = func(*args, **kwargs)
+        cached_results[key] = result
 
         return result
 

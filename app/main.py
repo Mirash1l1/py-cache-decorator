@@ -1,12 +1,18 @@
-from typing import Callable, Any
+from typing import Any, Callable
 import functools
 
+
 def cache(func: Callable) -> Callable:
-    cached_results = {}
+    """Cache decorator that stores results for given arguments."""
+    cached_results: dict[tuple[Any, ...], Any] = {}
 
     @functools.wraps(func)
-    def wrapper(*args, **kwargs) -> Any:
-        key = (args, tuple(sorted(kwargs.items())))
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
+        """Wrapper that returns cached result if available."""
+        key = (
+            args,
+            tuple(sorted(kwargs.items())),
+        )
 
         if key in cached_results:
             print("Getting from cache")

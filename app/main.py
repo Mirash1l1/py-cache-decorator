@@ -4,7 +4,7 @@ from functools import wraps
 def cache(func: Callable) -> Callable:
     cached_results = {}
 
-    @wraps
+    @wraps(func)
     def wrapper(*args, **kwargs) -> Any:
         key = (args, tuple(sorted(kwargs.items())))
 

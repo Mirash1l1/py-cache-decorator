@@ -1,10 +1,10 @@
 from typing import Callable, Any
-from functools import wraps
+import functools
 
 def cache(func: Callable) -> Callable:
     cached_results = {}
 
-    @wraps(func)
+    @functools.wraps(func)
     def wrapper(*args, **kwargs) -> Any:
         key = (args, tuple(sorted(kwargs.items())))
 
